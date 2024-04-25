@@ -1,0 +1,455 @@
+﻿<Window x:Class="PreOrderWin.PriceInvalid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PreOrderWin"
+        mc:Ignorable="d"
+        Title="PriceInvalid" Height="1920" Width="1080" Foreground="White" Background="White"  ShowInTaskbar="False" ResizeMode="NoResize" 
+           WindowStyle="None" WindowState="Maximized">
+    <Window.Resources>
+        <!-- Создаем шаблон с названием ClassButton для элементов типа Button -->
+        <ControlTemplate x:Key="ClassButton1" TargetType="{x:Type Button}">
+
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="White" Background="White" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ClassButton" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="White" Background="White" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ClassButton2" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="Blue" Background="Wheat" BorderThickness="1,1,1,1" CornerRadius="15,15,15,15">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ClassButton3" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="Blue" Background="#FFEEE7E7" BorderThickness="1,1,1,1" CornerRadius="15,15,15,15" Margin="0,0,0,0">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+
+
+        <ControlTemplate x:Key="ClassButton5" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="Blue" Background="White" BorderThickness="1,1,1,1" CornerRadius="15,15,15,15" Margin="0,0,0,0">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ClassButton4" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="White" Background="White"  Margin="0,0,0,0" Padding ="1">
+                <!-- Внутренняя граница черная -->
+                <Border x:Name= "border" Background="White" >
+                    <Grid Background="White">
+                        <Grid.RowDefinitions>
+                            <!-- Верхняя половинка кнопки -->
+                            <RowDefinition Height="0.5*"/>
+                            <!-- Нижняя половинка кнопки -->
+                            <RowDefinition Height="0.5*"/>
+                        </Grid.RowDefinitions>
+                        <!-- Рисуем подсветку кнопки -->
+                        <Border Opacity="0" HorizontalAlignment="Stretch" x:Name ="glow"  Width="Auto" Grid.RowSpan="2" CornerRadius="4,4,4,4" >
+                            <Border.Background>
+                                <!-- Задаем радиальный градиент co смещением -->
+                                <RadialGradientBrush>
+                                    <RadialGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform ScaleX="1.702" ScaleY="2.243" />
+                                            <SkewTransform AngleX="0" AngleY="0" />
+                                            <RotateTransform Angle="0" />
+                                            <TranslateTransform X="-0.368" Y="-0.152" />
+                                        </TransformGroup>
+                                    </RadialGradientBrush.RelativeTransform>
+                                    <!-- Цвета градиента в формате AR6E -->
+                                    <GradientStop Color="#B28DBDFF" Offset="0" />
+                                    <GradientStop Color="#008DBDFF" Offset="1" />
+                                </RadialGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <!-- Рисуем блик -->
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2" />
+                        <Border HorizontalAlignment ="Stretch" x:Name="shine" Width="Auto" CornerRadius="4,4,0,0">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0.494,0.028" EndPoint="0.494,0.889">
+                                    <GradientStop Color="#99FFFFFF" Offset="0" />
+                                    <GradientStop Color="#33FFFFFF" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid  Name="GridWin"  >
+        <Grid.Background >
+            <ImageBrush x:Name="StartImage" ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen402.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="RowPayment" Height="932*"/>
+            <RowDefinition  Height="887*"/>
+            <RowDefinition Height="101*"/>
+        </Grid.RowDefinitions>
+        <Border x:Name="ReclamaTov"  Grid.Row="0"   Height="356"  Padding="5" Width="1080"  VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,0,0,294" >
+            <Border.Background>
+                <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/ReclamaAvi.jpg"/>
+            </Border.Background>
+        </Border>
+
+        <Grid x:Name="StackGrid" Grid.Row="1" >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition  Width="233*"/>
+                <ColumnDefinition Width ="801*" Name="BludoView"/>
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="61*" />
+                <RowDefinition Height="575*"/>
+                <RowDefinition Height="61*" />
+
+                <RowDefinition Height="190*"/>
+            </Grid.RowDefinitions>
+
+            <Label  x:Name="TitleGrup" Grid.Row="0" Grid.Column="1" Content=""  VerticalAlignment="Center" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" FontFamily="dinpro-bold" FontWeight="Bold" FontSize="30" Foreground="Black"  Height="42" Width="358" Margin="239,10,240,9" />
+            <!--<StackPanel  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom" Grid.RowSpan="2"  Height="1079" Width="246">-->
+
+            <ListView Grid.Column="0" Grid.Row="0"  Height="635" x:Name="ListGrupTovs" Background="White"  BorderBrush="White" 
+                     SelectionChanged="GrupTovList_SelectionChanged"  ScrollViewer.CanContentScroll="False"   ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.PanningMode="VerticalOnly"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden" VerticalAlignment="Bottom" HorizontalContentAlignment="Stretch" Grid.RowSpan="2" 
+                     ManipulationBoundaryFeedback="OnManipulationBoundaryFeedback" Stylus.IsPressAndHoldEnabled="False" ScrollViewer.IsDeferredScrollingEnabled="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate  >
+                    <DataTemplate  >
+                        <StackPanel x:Name="GrupTov" Background="White" Width="230" Height="212" Orientation="Vertical" Stylus.IsPressAndHoldEnabled="False">
+                            <Border x:Name="BorderGrup"  BorderThickness="1,1,1,1" CornerRadius="8,8,8,8" VerticalAlignment="Top" BorderBrush="Black" Background="White" >
+                                <Image Width="200" Height="205" Source="{Binding ImagePath}"  />
+                            </Border>
+                            <TextBlock FontSize="20" Height="35" FontFamily="dinpro-bold" TextWrapping="Wrap" FontWeight="Medium" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,-25,0,0" />
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <!--<ListView.OpacityMask>
+                    <LinearGradientBrush StartPoint="0.95,1" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="0.9" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </ListView.OpacityMask>-->
+
+            </ListView>
+            <Rectangle  Height="80" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="1" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+
+            <ListView Grid.Column="1"  Height="576" x:Name="Listtov" Background="White" BorderBrush="White" SelectionChanged="ListTov_SelectionChanged" 
+                          ScrollViewer.CanContentScroll="True"   ScrollViewer.HorizontalScrollBarVisibility="Disabled"  SelectionMode="Single"
+                      ScrollViewer.IsDeferredScrollingEnabled="False"  ManipulationBoundaryFeedback="OnManipulationBoundaryFeedback"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"  Margin="5,0,6,0" Grid.Row="1" Stylus.IsPressAndHoldEnabled="False">
+                <!--Loaded="Loaded_BludoList"SelectedIndex="{Binding Path=SelectedIndexValue}" ItemsSource="{Binding Path=Items}"-->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0" Background="White" Height="300" Width="252" VerticalAlignment="Bottom" Stylus.IsPressAndHoldEnabled="False">
+                            <Border x:Name="In"  Width="40" Height="40"   Padding="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                    PreviewMouseDown="ButtonInfoInvalid_TouchDown"   >
+                                <Border.Background>
+                                    <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/iteminfo.png"/>
+                                </Border.Background>
+                            </Border>
+                            <!--<Image x:Name="In" Width="35" Height="40" Source="pack://application:,,,/PreOrderWin;component/Images/iteminfo.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" MouseLeftButtonDown="InfoTov_MouseLeftButtonDown" />-->
+                            <TextBlock x:Name="Cena" FontSize="28" Width="55" Height="40" FontWeight="Bold" Text="{Binding Path=PriceTov}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,-30,40,0"/>
+                            <!--<TextBlock x:Name="Valut" FontSize="16" Width="30" Height="30" FontWeight="Bold" Text="грн" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-15,50,0"  />-->
+                            <Image x:Name="Valutg" Height="25" Width="30"  Source="pack://application:,,,/PreOrderWin;component/Images/Grn.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-30,15,0"  />
+                            <Image x:Name="Bl" Width="170" Height="170" Source="{Binding Path=ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,-10,0,0" />
+                            <TextBlock FontSize="20" Height="45" FontFamily="dinpro-bold" TextWrapping="Wrap" FontWeight="Medium" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <!--<ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewTouchDown" Handler="Select_PreviewTouchDown" />
+                    </Style>
+                </ListView.ItemContainerStyle>-->
+
+            </ListView>
+
+
+
+            <ListView Grid.Column="1"  Height="576" x:Name="ListVid" Background="White" BorderBrush="White" SelectionChanged="ListTov_SelectionChanged" 
+                          ScrollViewer.CanContentScroll="False"   ScrollViewer.HorizontalScrollBarVisibility="Disabled"  SelectionMode="Single"
+                     ScrollViewer.PanningMode="VerticalOnly" ScrollViewer.IsDeferredScrollingEnabled="False"  ManipulationBoundaryFeedback="OnManipulationBoundaryFeedback"
+                ScrollViewer.VerticalScrollBarVisibility="Hidden"  Margin="5,0,6,0" Grid.Row="1" Stylus.IsPressAndHoldEnabled="False">
+                <!--Loaded="Loaded_BludoList"SelectedIndex="{Binding Path=SelectedIndexValue}" ItemsSource="{Binding Path=Items}"-->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="0" Background="White" Height="300" Width="252" VerticalAlignment="Bottom" Stylus.IsPressAndHoldEnabled="False" >
+                            <!--<Border x:Name="In"  Width="40" Height="40"   Padding="5" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                    PreviewMouseDown="ButtonInfoInvalid_TouchDown"   >
+                                <Border.Background>
+                                    <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/iteminfo.png"/>
+                                </Border.Background>
+                            </Border>-->
+                            <!--<Image x:Name="In" Width="35" Height="40" Source="pack://application:,,,/PreOrderWin;component/Images/iteminfo.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" MouseLeftButtonDown="InfoTov_MouseLeftButtonDown" />-->
+                            <!--<TextBlock x:Name="Cena" FontSize="28" Width="55" Height="40" FontWeight="Bold" Text="{Binding Path=PriceTov}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,-30,40,0"/>-->
+                            <!--<TextBlock x:Name="Valut" FontSize="16" Width="30" Height="30" FontWeight="Bold" Text="грн" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-15,50,0"  />-->
+                            <!--<Image x:Name="Valutg" Height="25" Width="30"  Source="pack://application:,,,/PreOrderWin;component/Images/Grn.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-30,15,0"  />-->
+                            <Image x:Name="Bl" Width="170" Height="170" Source="{Binding Path=ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,-10,0,0" Stylus.IsPressAndHoldEnabled="False"/>
+                            <TextBlock FontSize="20" Height="45" FontFamily="dinpro-bold" TextWrapping="Wrap" FontWeight="Medium" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+
+            <Rectangle Height="80" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom" Margin="5,0,6,0" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="1" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label x:Name="Text1" Grid.Row="2"  Grid.Column="0" Content="МОЄ ЗАМОВЛЕННЯ - "  VerticalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="32" Foreground="Wheat"  Height="46" Grid.ColumnSpan="2" Margin="0,8,686,7" />
+            <Label x:Name="Text2" Grid.Row="2"  Grid.Column="1" Width="238" Content=" У РЕСТОРАНІ"  VerticalAlignment="Center" HorizontalAlignment="Left" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="32" Foreground="Yellow"  Height="46" Margin="122,8,0,7" />
+            <Label x:Name="Text3" Grid.Row="2"  Grid.Column="1" Width="142" Content=" РАЗОМ: "  VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="32" Foreground="Yellow"  Height="46" Margin="0,8,223,7" />
+            <Label x:Name="Text4" Grid.Row="2"  Grid.Column="1" Width="138" Content=" 0000,00 "  VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="32" Foreground="Yellow"  Height="46" Margin="0,8,80,7" />
+            <Label x:Name="Text5" Grid.Row="2"  Grid.Column="1" Width="68" Content=" грн "  VerticalAlignment="Center" HorizontalAlignment="Right" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="32" Foreground="Yellow"  Height="46" Margin="0,8,25,7" />
+
+
+            <ListView Grid.Row="3" Grid.ColumnSpan="2" Background="White"  Height="190" x:Name="OrderList"  BorderBrush="White" SelectionChanged="OrderList_SelectionChanged" 
+                      ScrollViewer.CanContentScroll="False"   ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                      VerticalAlignment="Bottom" Margin="0,0,0,-1" ManipulationBoundaryFeedback="OnManipulationBoundaryFeedback" Stylus.IsPressAndHoldEnabled="False" >
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <StackPanel Margin="0" Background="White" Height="190" Width="250"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Stylus.IsPressAndHoldEnabled="False" >
+                            <Border x:Name="In"  Width="50" Height="50"   Padding="5" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                                     MouseLeftButtonDown="DelTov_MouseLeftButtonDown"  ><!--PreviewMouseDown="ButtonDelTovPriceInvalid_PreviewTouchDown"-->
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding Path=DeleteTov}" />
+                                </Border.Background>
+                            </Border>
+                            <TextBlock x:Name="Suma" Width="75" Height="30" Text="{Binding Path=SumTov}"  VerticalAlignment="Bottom" HorizontalAlignment="Left" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="28"    Margin="0,-43,0,0" />
+                            <!--<Label x:Name="Valut"  Width="68"  FontSize="20"  Height="30" Content=" грн "  VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Medium" FontFamily="dinpro-bold"  Margin="75,-30,0,0" />-->
+                            <Image x:Name="Valutg" Height="30" Width="68"  Source="pack://application:,,,/PreOrderWin;component/Images/Grn.png" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,-30,0,0"  />
+                            <Image x:Name="Bl1" Width="110" Height="110" Source="{Binding Path=ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,0,0,0" />
+                            <TextBlock FontSize="18" Height="45" FontFamily="dinpro-bold" TextWrapping="Wrap" FontWeight="Medium" Text="{Binding Path=NameTov}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,-10,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <!--<ListView.OpacityMask>
+                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="1" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </ListView.OpacityMask>-->
+            </ListView>
+            <Rectangle  x:Name="Gorizont" Width="90" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="1" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Image x:Name="ScrolRight" Grid.Column="1" Grid.Row="3" Source="pack://application:,,,/PreOrderWin;component/Images/Scrolvniz.jpg" Margin="746,51,5,65" RenderTransformOrigin="0.635,0.573" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.593"/>
+                        <TranslateTransform X="-3.055" Y="-10.375"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <Image x:Name="ScrolLeft" Grid.Column="0" Grid.Row="3" Source="pack://application:,,,/PreOrderWin;component/Images/Scrolleft.jpg" Margin="0,35,185,61"   />
+
+
+            <Label x:Name="Masege" Grid.Row="3"  Grid.Column="1" Content="Ви ще нічого не замовили" HorizontalAlignment="Left" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="30" Foreground="Black"  Height="40" Width="398" Margin="138,55,0,95"  />
+
+
+        </Grid>
+
+
+        <Grid Grid.Row="2" Margin="0,9,0,0">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition  Width ="224*"/>
+                <ColumnDefinition Width ="460*"/>
+                <ColumnDefinition  Width ="217*"/>
+                <ColumnDefinition Width ="99*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button  x:Name ="ButtonBackPriceInvalid" Grid.Column="0"  Margin="20,15,0,17" FontWeight="Bold" Template="{DynamicResource ClassButton}"  Width="200" Height="60" FontSize="28"
+                     VerticalAlignment="Stretch" HorizontalAlignment = "Left" PreviewMouseLeftButtonDown="ButtonBackPriceInvalid_PreviewMouseDown"  Stylus.IsPressAndHoldEnabled="False" >
+                <!--Click="Back_Click"-->
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF3A2A06" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                </Button.Effect>
+                <!--<Grid Width="200" Height="50">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="17*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="BackLeft" Source="pack://application:,,,/PreOrderWin;component/Images/Back_left.jpg" Grid.Column="0" Width="46" Height="50"/>
+                    <Label Name="BackMain" Grid.Column="1" Content="НАЗАД" FontFamily="dinpro-bold"  FontSize="26" FontWeight="Bold" Foreground="Black"  Margin="0,4,20,4" Height="38" />
+
+
+
+                    -->
+                <!--<Border x:Name="BackLeft" Grid.Column="0" Padding="5" Width="46" Height="50" HorizontalAlignment="Center"  Margin="5,0,0,0" >
+                        <Border.Background>
+                            <ImageBrush x:Name="LeftBack" ImageSource="pack://application:,,,/PreOrderWin;component/Images/Back_left.jpg"/>
+                        </Border.Background>
+                    </Border>-->
+                <!--
+
+                </Grid>-->
+                <Grid>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="130"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border x:Name="BackLeft" Grid.Column="0"  Padding="5" Width="60" Height="55" HorizontalAlignment="Left" Grid.ColumnSpan="4" Margin="0,0,0,0" >
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Back_left.jpg"/>
+                        </Border.Background>
+                    </Border>
+                    <Label Name="BackTake" Grid.Column="3" Content="НАЗАД" FontFamily="dinpro-bold"  FontSize="26" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,10,21,10" />
+                </Grid>
+            </Button>
+
+            <Button Template="{DynamicResource ClassButton}" x:Name ="ButtonFinishPriceInvalid"  Grid.Column="2" Margin="17,15,17,17"   Width="200" Height="60" FontFamily="dinpro-bold"
+                    Foreground="Black" FontSize="26"  FontWeight="Bold" VerticalAlignment="Stretch"  HorizontalAlignment = "Center" 
+                    PreviewMouseLeftButtonDown="ButtonFinishPriceInvalid_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False">
+               
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                </Button.Effect>
+                <Grid Width="200" Height="50">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="130*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Name="Ok" Grid.Column="0" Content="ГОТОВО" FontFamily="dinpro-bold"  FontSize="26" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="10,6" Height="38" />
+                    <Border x:Name="Next" Grid.Column="1"  Padding="5" Width="46" Height="50" HorizontalAlignment="Left" Margin="0,0,0,0" >
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Next.jpg"/>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Button>
+            <Button Template="{DynamicResource ClassButton1}" x:Name ="ButtonDeleteOrderInvalid" Grid.Column="1"  FontFamily="dinpro-bold" Foreground="Black" Width="440" Height="60" 
+                    FontSize="26" FontWeight="Bold" VerticalAlignment="Stretch" HorizontalAlignment = "Stretch" 
+                   Background="#FFFDF6F6" Margin="28,15,29,17" PreviewMouseLeftButtonDown="ButtonDeleteOrderInvalid_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False" >
+                <!--Click="Delete_Click"-->
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                </Button.Effect>
+                <Grid Width="440" Height="60">
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="390*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image x:Name="Del" Source="pack://application:,,,/PreOrderWin;component/Images/screen43del.jpg" Grid.Column="0" Width="46" Height="50"/>
+                    <Label Name="DeletOrder" Grid.Column="1" Content="СКАСУВАТИ  ЗАМОВЛЕННЯ" FontFamily="dinpro-bold"  FontSize="26" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,8,0,9" Height="38" Grid.RowSpan="2" />
+                    <!--<Border x:Name="Del" Grid.Column="0"  Padding="5" Width="48" Height="50" HorizontalAlignment="Left" Margin="0,0"  >
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen43del.jpg"/>
+                        </Border.Background>
+                    </Border>-->
+
+                </Grid>
+
+            </Button>
+            <Button  x:Name ="Button6" Grid.Column="3" Margin="0,15,10,17"  Template="{DynamicResource ClassButton}"  Width="70" Height="60" FontSize="20" VerticalAlignment="Stretch" HorizontalAlignment = "Right"  
+                     PreviewMouseLeftButtonDown="ButtonPriceInvalidOf_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False">
+                <!-- TouchDown="ButtonInvalid_TouchDown"Click="Back_Invalid_Click"-->
+                <Button.Effect>
+                    <DropShadowEffect Color="#FF3A2A06" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                </Button.Effect>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border x:Name="Invalid"   Padding="5" Width="60" Height="60" Grid.ColumnSpan="2"  >
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Invalid_Klo.jpg"/>
+                        </Border.Background>
+                    </Border>
+                </Grid>
+            </Button>
+        </Grid>
+
+
+    </Grid>
+</Window>
+

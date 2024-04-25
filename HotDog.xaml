@@ -1,0 +1,208 @@
+﻿<Window x:Class="PreOrderWin.HotDog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="HotDog" Left="0" Height="1080" Width="1080" Foreground="White" Background="White"  ShowInTaskbar="False" ResizeMode="NoResize"  WindowStyle="None"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="369*" />
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="139*" />
+        </Grid.RowDefinitions>
+        <Grid Background="White" Name="GridWin" Stylus.IsPressAndHoldEnabled="False"  >
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width ="397*" />
+                <ColumnDefinition Width="503*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="59*" />
+                <RowDefinition Height="254*"/>
+                <RowDefinition Height="56*" />
+            </Grid.RowDefinitions>
+            <Image x:Name="ImageTov" Grid.Row="1" Grid.Column="0"  Margin="68,0,68,109" Source="pack://application:,,,/PreOrderWin;component/Images/1.jpg"  />
+            <!--<Border x:Name="ImageTov"  Grid.Row="1" Grid.Column="0"    Padding="5" Width="340" Margin="68,0,68,109"    >
+                <Border.Background>
+                    <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/1.jpg"/>
+                </Border.Background>
+            </Border>-->
+            <!--<Image x:Name="ImageTov" Grid.Row="1" Grid.Column="0"  Margin="8,59,8,137" Width="377" HorizontalAlignment="Center" Source="pack://application:,,,/PreOrderWin;component/Images/1.jpg"/>-->
+            <Image x:Name="WinClos" Grid.Row="0" Grid.Column="1" Height="80" Width="80" Margin="0,0,0,0"  HorizontalAlignment="Right" VerticalAlignment="Top" 
+                      MouseLeftButtonDown="ButtonClose_PreviewMouseDown" 
+                   Source="pack://application:,,,/PreOrderWin;component/Images/CloseX.jpg"/>
+            <!-- PreviewTouchDown="ButtonClose_PreviewTouchDown"PreviewMouseDown="ButtonClose_PreviewMouseDown"TouchDown="ButtonClose_TouchDown"-->
+            <TextBlock   x:Name="TitleTov" Grid.Row="0" Text="           КАРТА ТОВАРУ" TextWrapping="Wrap"  VerticalAlignment="Center" HorizontalAlignment="Center"   FontWeight="Medium" FontFamily="dinpro-bold"  
+                         FontSize="30" Foreground="Black"  Height="80" Width="485" Grid.ColumnSpan="2" Margin="290,28,305,10"     />
+            <Grid x:Name="Bun" Grid.Row="2" Grid.Column="0"  >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="131*"/>
+                    <ColumnDefinition Width="168*"/>
+                    <ColumnDefinition Width="177"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock  x:Name="BunBlack" Grid.Column="1" Text="СВІТЛА БУЛОЧКА"  VerticalAlignment="Center" HorizontalAlignment="Stretch"   
+                             FontSize="16" FontWeight="Bold" FontFamily="dinpro-bold" TextWrapping="Wrap"   Foreground="Black"  Height="48" Width="80" Margin="74,34,14,34"  />
+                <TextBlock x:Name="BunWait" Text="ТЕМНА БУЛОЧКА"  VerticalAlignment="Center" HorizontalAlignment="Stretch"   
+                             FontSize="16" FontWeight="Bold" FontFamily="dinpro-bold" TextWrapping="Wrap"   Foreground="Black"  Height="48" Width="80"  Grid.Column="2" Margin="77,34,20,34" />
+                <Image x:Name="ImageBunWait"  Stretch="None" Source="pack://application:,,,/PreOrderWin;component/Images/PointBlack.jpg" 
+                        Grid.Column="1" Margin="7,31,109,40" PreviewMouseLeftButtonDown="ButtonBunWait_PreviewMouseDown" />
+                <!--PreviewTouchDown="ButtonBunWaitHotdog_PreviewTouchDown" -->
+                <Image x:Name="ImageBunBlack"  Stretch="None" Source="pack://application:,,,/PreOrderWin;component/Images/PointYelow.jpg" 
+                         Grid.Column="2" Margin="7,31,109,40" PreviewMouseLeftButtonDown="ButtonBunBlack_PreviewMouseDown" />
+                <!--PreviewTouchDown="ButtonBunBlackHotdog_PreviewTouchDown" -->
+
+            </Grid>
+            <Grid x:Name="OpciiTov" Grid.Row="1"   Grid.Column="1" Margin="2,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="289*" />
+                    <RowDefinition Height="74*"/>
+                    <RowDefinition Height="134*" />
+                </Grid.RowDefinitions>
+                <Label  x:Name="PriceTov" Grid.Row="1" Content="65"  VerticalAlignment="Center" HorizontalAlignment="Left"  HorizontalContentAlignment="Center" FontWeight="Medium" FontFamily="dinpro-bold"   FontSize="62" Foreground="Black"  Height="68" Width="116" Margin="0,2,0,4"    />
+                <!--<Label  x:Name="ValutTov"  Grid.Row="1" Content="грн"  VerticalAlignment="Center" HorizontalAlignment="Left"  HorizontalContentAlignment="Stretch" FontWeight="Medium" FontFamily="dinpro-bold"   FontSize="44" Foreground="Black"  Height="59" Width="85" Margin="116,13,0,0" />-->
+                <Image x:Name="Valutgrn"  Grid.Row="1" Height="59" Width="85" Margin="116,13,0,0"  Source="pack://application:,,,/PreOrderWin;component/Images/Grn.png"  VerticalAlignment="Center" HorizontalAlignment="Left"  />
+
+                <TextBlock  x:Name="Reclama"   Grid.Row="0" TextWrapping="Wrap" Text=" "  VerticalAlignment="Top" HorizontalAlignment="Left"   FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="17" Foreground="Black"  Height="308" Width="604" Margin="0,0,-4,0"      />
+
+                <Grid x:Name="GridOpcii" Grid.Row="2" Grid.Column="0" Stylus.IsPressAndHoldEnabled="False" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="25*"/>
+                        <RowDefinition Height="97*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="167*"/>
+                        <ColumnDefinition Width="180*"/>
+                        <ColumnDefinition Width="253*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  x:Name="Col" Grid.Column="0" Content="Кетчуп"  VerticalAlignment="Top" HorizontalAlignment="Center"   
+                             FontSize="20" FontWeight="Medium" FontFamily="dinpro-bold"   Foreground="Black"  Height="42" Width="75" Margin="59,0,33,0" Grid.RowSpan="3" />
+                    <Label  x:Name="Perec" Content="Майонез"  VerticalAlignment="Top" HorizontalAlignment="Center"   
+                             FontSize="20" FontWeight="Medium" FontFamily="dinpro-bold"   Foreground="Black"  Height="42" Width="96" Margin="41,0,43,0" Grid.Column="1" Grid.RowSpan="3" />
+                    <Label  x:Name="Mayonez" Grid.Column="2" Content="Горчиця"  VerticalAlignment="Top" HorizontalAlignment="Center"   
+                             FontSize="20" FontWeight="Medium" FontFamily="dinpro-bold"   Foreground="Black"  Height="42" Width="100" Margin="26,0,127,0" Grid.RowSpan="3" />
+                    <Image x:Name="OffCol" Grid.Row="2" Grid.Column="0" Source="pack://application:,,,/PreOrderWin;component/Images/OffOk.jpg" HorizontalAlignment="Center"
+                           PreviewMouseLeftButtonDown="TakeColOnOff_MouseLeftButtonDown"  Margin="45,9,36,28" Stretch="None" />
+                    <Image x:Name="ImageCol"  Stretch="None" Source="pack://application:,,,/PreOrderWin;component/Images/screen60Select.jpg" 
+                             PreviewMouseLeftButtonDown="Ketchup_OnMouseDown"  Margin="45,9,36,28" Grid.Row="2" Grid.Column="0" />
+                    <!--PreviewMouseDown="Col_Click"TouchDown="Ketchup_OnMouseDownOrTouchDown"-->
+                    <Image x:Name="OffPaprik" Grid.Column="1" Grid.Row="2" Source="pack://application:,,,/PreOrderWin;component/Images/OffOk.jpg" HorizontalAlignment="Right"
+                           PreviewMouseLeftButtonDown="TakePaprikOnOff_MouseLeftButtonDown"  Margin="0,9,75,30" Width="54" Stretch="None" />
+                    <Image x:Name="ImagePaprik" Stretch="None"  Source="pack://application:,,,/PreOrderWin;component/Images/screen60Select.jpg" 
+                           PreviewMouseLeftButtonDown="Paprik_OnMouseDown" Margin="0,9,75,30" HorizontalAlignment="Right" Width="54" Grid.Column="1" Grid.Row="2"/>
+                    <!--PreviewMouseDown="Papric_Click" TouchDown="Mayonez_OnMouseDownOrTouchDown" Uniform-->
+                    <Image x:Name="OffMayonez" Grid.Column="2" Grid.Row="2" Source="pack://application:,,,/PreOrderWin;component/Images/OffOk.jpg" 
+                           PreviewMouseLeftButtonDown="TakeMayonezOnOff_MouseLeftButtonDown"  Margin="37,7,148,32" Width="54" Stretch="None" />
+                    <Image x:Name="ImageMayonez" Grid.Column="2" Stretch="None"  Source="pack://application:,,,/PreOrderWin;component/Images/screen60Select.jpg" 
+                            PreviewMouseLeftButtonDown="Mustard_OnMouseDown" Margin="23,7,162,32" Grid.Row="2" />
+                    <!--PreviewMouseDown="Mustard_Click"TouchDown="Mustard_OnMouseDownOrTouchDown"-->
+                </Grid>
+            </Grid>
+
+            <Grid x:Name="PanelKol" Grid.Row="2" Grid.Column="1" Margin="0,0,0,-2" Stylus.IsPressAndHoldEnabled="False" >
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="102*"/>
+                    <ColumnDefinition Width="41*"/>
+                    <ColumnDefinition Width="42*"/>
+                    <ColumnDefinition Width="46*"/>
+                    <ColumnDefinition Width="71*"/>
+                </Grid.ColumnDefinitions>
+                <!--<Button x:Name="ImageOkHotdog"  Grid.Column="4" Width="96" Height="60" Background="White"   BorderBrush="White"
+                        VerticalAlignment="Center"  HorizontalAlignment = "Center" Margin="10,20,11,20"
+                        PreviewMouseLeftButtonDown="ButtonOkHotdog_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False" >
+                    <Border x:Name="ImageOk"    Width="96" Height="60" VerticalAlignment="Center"  HorizontalAlignment = "Center" >
+                        <Border.Background>
+                            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen60Ok.jpg"/>
+                        </Border.Background>
+                    </Border>
+   
+                </Button>-->
+                <!--<Button x:Name="ImagePlusHotdog"  Grid.Column="3" Width="45" Height="48" Background="White"   BorderBrush="White"
+                        VerticalAlignment="Center"  HorizontalAlignment = "Center" Margin="5,38,10,36"
+                        PreviewMouseLeftButtonDown="ButtonPlus_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False" >
+                    <Border x:Name="ImagePlus"    Width="45" Height="48" VerticalAlignment="Center"  HorizontalAlignment = "Center" >
+                        <Border.Background>
+                            <ImageBrush x:Name="Plus"  ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen60plus.jpg"/>
+                        </Border.Background>
+                    </Border>
+                </Button>-->
+
+                <Image x:Name="ImagePlusHotdog" Grid.Column="3" Height="48" HorizontalAlignment="Center" VerticalAlignment="Center"  Source="pack://application:,,,/PreOrderWin;component/Images/screen60plus.jpg"
+                           Margin="18,34,30,32" Width="44"  PreviewMouseLeftButtonDown="ButtonPlus_PreviewMouseDown" Stretch="None" />
+                <!--PreviewTouchDown="ButtonPlusHotdog_PreviewTouchDown"-->
+                <Image  x:Name="ImageOkHotdog" Source="pack://application:,,,/PreOrderWin;component/Images/screen60Ok.jpg" Grid.Column="4" 
+                                             VerticalAlignment="Center"  HorizontalAlignment = "Center" Margin="6,18,7,18" Stretch="None"
+                           PreviewMouseLeftButtonDown="ButtonOkHotdog_PreviewMouseDown" Height="78" Width="129"/>
+
+                <Image x:Name="ImageMinusHotdog"   Source="pack://application:,,,/PreOrderWin;component/Images/screen60minus.jpg" 
+                            Margin="11,38,1,36" Grid.Column="1" PreviewMouseLeftButtonDown="ButtonMinusHotdog_PreviewMouseDown" Stretch="None" />
+                <!--PreviewTouchDown="ButtonMinusHotdog_PreviewTouchDown"-->
+                <Label x:Name="Kolvo"   Grid.Column="2" Content=" "  FontSize="40"  FontWeight="Medium" FontFamily="dinpro-bold" Foreground="Black"  Height="50"   HorizontalContentAlignment="Center"  VerticalAlignment="Center" Margin="4,32"  />
+                <TextBlock  x:Name="Kolichestvo"  Grid.Column="0" TextWrapping="Wrap" Text="Додати      до кошика:"  VerticalAlignment="Center" HorizontalAlignment="Left"   FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="20" Foreground="Black" Margin="36,27,0,19" Height="68" Width="122"      />
+            </Grid>
+        </Grid>
+        <Line x:Name="Cherta" Stroke="Yellow" StrokeThickness="5" X1="0" Y1="730" X2="1080" Y2="730"  />
+        <Label  x:Name="SetAdd" Content="ОБЕРІТЬ ДОДАТКОВО"  VerticalAlignment="Center" HorizontalAlignment="Center"  HorizontalContentAlignment="Center" FontWeight="Bold" FontFamily="dinpro-bold"   FontSize="38" Foreground="Black"  Height="53" Width="442"  Grid.Row="1"  />
+
+        <Grid x:Name="Related2" Grid.Row="2" Margin="0,4" >
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width ="0*" />
+                <ColumnDefinition Width="52*"/>
+                <ColumnDefinition Width="123*"/>
+                <ColumnDefinition Width="333*"/>
+                <ColumnDefinition Width="572*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="NameRelated2" Text="    " TextWrapping="Wrap" Foreground="Black" FontSize="28" FontFamily="dinpro-bold" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Width="155" Height="88" Grid.ColumnSpan="3" Margin="10,107,10,75"  />
+
+
+            <ListView  Grid.Column="3"  Height="270" Width="900" x:Name="ListRelated2" Background="White" BorderBrush="White" SelectionChanged="BludoList_SelectionChanged" 
+                          ScrollViewer.CanContentScroll="True"   ScrollViewer.HorizontalScrollBarVisibility="Hidden" ManipulationBoundaryFeedback="OnManipulationBoundaryFeedback"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Margin="3,0,2,0" 
+                        >
+                <!--Stylus.IsPressAndHoldEnabled="False"-->
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="Background" Value="Transparent" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                    <ContentPresenter />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel  Background="White"  Height="270" Width="250" VerticalAlignment="Bottom" Stylus.IsPressAndHoldEnabled="False" >
+                            <Image x:Name="In" Width="35" Height="44" Source="pack://application:,,,/PreOrderWin;component/Images/iteminfo.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                                   PreviewMouseLeftButtonDown="InfoTov_MouseLeftButtonDown" />
+                            <!--PreviewTouchDown="InfoTov_PreviewTouchDown"-->
+                            <TextBlock x:Name="Cena" FontSize="28" Width="55" Height="42" FontWeight="Bold" Text="{Binding Path=PriceTov}" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Margin="0,-33,40,0"/>
+                            <!--<TextBlock x:Name="Valut" FontSize="16" Width="30" Height="30" FontWeight="Bold" Text="грн" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-15,50,0"  />-->
+                            <Image x:Name="Valutg" Height="25" Width="30"  Source="pack://application:,,,/PreOrderWin;component/Images/Grn.png" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-33,15,0"  />
+                            <Image x:Name="Bl" Width="180" Height="180" Source="{Binding Path=ImagePath}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="0,-10,0,0" />
+                            <TextBlock FontSize="18" Height="44" FontFamily="dinpro-bold" TextWrapping="Wrap" FontWeight="Medium" Text="{Binding Path=Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,-5,0,0" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+            <Rectangle  x:Name="Gorizont" Width="90"   Grid.Column="4" HorizontalAlignment="Right" >
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0" Color="Transparent"></GradientStop>
+                        <GradientStop Offset="1" Color="White"></GradientStop>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+    </Grid>
+</Window>

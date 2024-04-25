@@ -1,0 +1,309 @@
+﻿<Window x:Class="PreOrderWin.CuponWin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PreOrderWin"
+        mc:Ignorable="d"
+        Title="CuponWin" Height="1920" Width="1080" Foreground="Green" Background="Green"  ShowInTaskbar="False" ResizeMode="NoResize" 
+           WindowStyle="None" WindowState="Maximized" AllowDrop="False">
+    <Window.Resources>
+        <!-- Создаем шаблон с названием ClassButton для элементов типа Button -->
+        <ControlTemplate x:Key="ClassButton" TargetType="{x:Type Button}">
+            <!-- Секция дня описания кнопки -->
+            <!-- Наружная граница белая -->
+            <Border BorderBrush="White" Background="White" BorderThickness="1,1,1,1" CornerRadius="10,10,10,10">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" />
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.Background >
+            <ImageBrush x:Name="StartImage" ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen704.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48*" />
+            <RowDefinition Height="45*" />
+            <RowDefinition Height="68*" />
+            <RowDefinition Height="198*" />
+            <RowDefinition Height="73*" />
+            <RowDefinition Height="60*" />
+            <RowDefinition Height="129*" />
+            <RowDefinition Height="398*" />
+            <RowDefinition Height="92*" />
+            <RowDefinition Height="112*" />
+            <RowDefinition Height="390*"/>
+            <RowDefinition Height="307*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="BarBonus" Grid.Row="0" Grid.Column="0" Height="140" VerticalAlignment="Top" Margin="0,3,0,0" Grid.RowSpan="3">
+
+            <Image x:Name="ImageKlo"  Height="58" HorizontalAlignment="Left" VerticalAlignment="Bottom"  Source="pack://application:,,,/PreOrderWin;component/Images/KloSmal.jpg"
+                     Width="90" Margin="53,0,0,0"/>
+            <Label Name="Bar"    VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" Content=" " FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="36" Foreground="Black" Height="46" Width="286" Margin="161,92,93,2"  />
+        </Grid>
+
+        <!--<Grid x:Name="ValueBonus" Grid.Row="0" Grid.Column="1" Height="190" VerticalAlignment="Top" Margin="0,3,0,0" Grid.RowSpan="4">
+            <Image x:Name="ImageGrn"  Height="58" HorizontalAlignment="Left" VerticalAlignment="Stretch"  Source="pack://application:,,,/PreOrderWin;component/Images/SimvolGrn.jpg"
+                     Width="57" Margin="339,95,0,37"/>
+            <Label Name="Bonus"    VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" Content="000,00 " FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="52" Foreground="Black" Height="64" Width="172" Margin="159,91,209,35"  />
+        </Grid>-->
+        <!--<Label Name="OstBonus"  Grid.Row="1" Grid.Column="1" Content="ЗАЛИШОК БОНУСІВ:" VerticalAlignment="Center" HorizontalContentAlignment="Center"  HorizontalAlignment="Center" 
+               FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="24" Foreground="Black" Height="36" Width="322" Margin="113,5,105,4"   />-->
+        <Label Name="Cuponscan"  Grid.Row="3" Grid.ColumnSpan="2"  VerticalAlignment="Bottom" HorizontalContentAlignment="Center"  
+               HorizontalAlignment="Center" Content="ПРОСКАНУЙТЕ " FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="56" 
+                Foreground="Black" Height="71" Width="900" Margin="104,0,76,0"  />
+
+        <Label Name="Cupon"  Grid.Row="3" Grid.ColumnSpan="2"  VerticalAlignment="Bottom" HorizontalContentAlignment="Center"  VerticalContentAlignment="Top" 
+               HorizontalAlignment="Center" Content="КУПОН " FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="55" 
+                Foreground="Black" Height="64" Width="900" Margin="109,0,71,10" Grid.RowSpan="2"   />
+
+        <Label Name="TextBar" Grid.Column="1" Grid.Row="6"  Content="Піднесіть купон&#xa;штрихкодом  до сканера&#xa;на відстані 15-20 см." FontFamily="dinpro-bold"  FontSize="30" FontWeight="Normal" 
+               Foreground="Black" VerticalAlignment="Center" Height="112" HorizontalContentAlignment="Left"
+               HorizontalAlignment="Left"  Width="439"    />
+        <TextBox x:Name="BarcodeCupon" Grid.Row="7" Grid.Column="1" Height="26" Width="249" FontSize="18" BorderThickness="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,14,0,0" KeyDown="BarCod_KeyDown"/>
+
+        <Label Name="ErrorKod"  Grid.Row="7" Grid.ColumnSpan="2"  VerticalAlignment="Bottom" HorizontalContentAlignment="Center"  
+               HorizontalAlignment="Center" Content="КУПОН НЕ ДІЙСНИЙ " FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="46" 
+               Background="Red" Foreground="White" Height="70" Width="1080"  />
+        <Label Name="KodCupon"  Grid.Row="8" Grid.ColumnSpan="2"  VerticalAlignment="Center" HorizontalContentAlignment="Center"  
+               HorizontalAlignment="Center" Content="АБО ВВЕДІТЬ КОД КУПОНА " FontWeight="Medium" FontFamily="dinpro-bold"  FontSize="56" 
+                Foreground="Black" Height="80" Width="881" Margin="109,6,90,6"  />
+
+        <Image x:Name="ImageShtrih" Grid.Row="9" Height="58" HorizontalAlignment="Left" VerticalAlignment="Stretch"  Source="pack://application:,,,/PreOrderWin;component/Images/BackDel.jpg"
+                    Width="515"  Grid.ColumnSpan="2" Margin="292,33,0,21"/>
+        <Grid x:Name="KodKupon" Grid.Row="9"  Grid.Column="0" Grid.ColumnSpan="2" Margin="299,23,273,23">
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="30*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="33*"/>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="32*"/>
+                <ColumnDefinition Width="31*"/>
+                <ColumnDefinition Width="90*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="ValueOne" Grid.Column="0" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" Width="30" Height="55"  Margin="1,9,1,0" Grid.RowSpan="2"  />
+            <Label x:Name="ValueTo" Grid.Column="1" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="4,9,0,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueThree" Grid.Column="2" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="0,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueFour" Grid.Column="3" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="3,9,0,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueFive" Grid.Column="4" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="3,9,0,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueSix" Grid.Column="5" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueSeven" Grid.Column="6" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueEight" Grid.Column="7" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueNine" Grid.Column="8" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="ValueZero" Grid.Column="9" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="Value11" Grid.Column="10" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="Value12" Grid.Column="11" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Label x:Name="Value13" Grid.Column="12" Width="30" Height="55" Content=" " FontSize="38" FontWeight="Medium"  VerticalContentAlignment="Bottom" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"   Margin="1,9,1,0" Grid.RowSpan="2" />
+            <Image Name="DelCupValue" Grid.Column="13" Source="pack://application:,,,/PreOrderWin;component/Images/DelValueCup.jpg"  PreviewMouseLeftButtonDown="DelCupValue_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="4,4,0,-3" Stylus.IsPressAndHoldEnabled="False"/>
+        </Grid>
+
+
+        <Grid x:Name="Klavisha" Grid.Row="10"  Grid.Column="0" Grid.ColumnSpan="2" Margin="400,13,400,10" >
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="88*" />
+                <RowDefinition Height="94*" />
+                <RowDefinition Height="89*" />
+                <RowDefinition Height="94*" />
+
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="93*"/>
+                <ColumnDefinition Width="93*"/>
+                <ColumnDefinition Width="93*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Name="One" Grid.Column="0" Grid.Row="0" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenOne.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="One_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="4,2,9,6" />
+            <Image Name="To" Grid.Column="1" Grid.Row="0" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenTo.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="To_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,2,6,8" />
+
+            <Image Name="Three" Grid.Column="2" Grid.Row="0" Source="pack://application:,,,/PreOrderWin;component/Images/Three.jpg" 
+                            Height="80" Width="85"  PreviewMouseLeftButtonDown="Three_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="4,2,9,6" />
+            <Image Name="Four" Grid.Column="0" Grid.Row="1" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenFour.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="Four_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,6,5,10" />
+            <Image Name="Five" Grid.Column="1" Grid.Row="1" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenFive.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="Five_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,6,6,10" />
+            <Image Name="Six" Grid.Column="2" Grid.Row="1" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenSix.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="Six_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,6,5,10" />
+            <Image Name="Seven" Grid.Column="0" Grid.Row="2" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenSeven.jpg" 
+                            PreviewMouseLeftButtonDown="Seven_MouseLeftButtonDown"    Stretch="Uniform"  Margin="4,1,5,3" />
+            <Image Name="Eight" Grid.Column="1" Grid.Row="2" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenEight.jpg" 
+                            Height="78" Width="85" PreviewMouseLeftButtonDown="Eight_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,3,5,8" />
+            <Image Name="Nine" Grid.Column="2" Grid.Row="2" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenNine.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="Nine_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,2,5,9" />
+            <Image Name="Zero" Grid.Column="0" Grid.Row="3" Source="pack://application:,,,/PreOrderWin;component/Images/ScreenZero.jpg" 
+                            Height="78" Width="85"  PreviewMouseLeftButtonDown="Zero_MouseLeftButtonDown"
+                            Stretch="Uniform"  Margin="3,8,5,9" />
+            <Image Name="Del" Grid.Row="3" Grid.Column="1" Source="pack://application:,,,/PreOrderWin;component/Images/Del.jpg" HorizontalAlignment="Center"
+                            PreviewMouseLeftButtonDown="Del_MouseLeftButtonDown" Stretch="Uniform"  Margin="5,5,7,3" Grid.ColumnSpan="2" Width="175" />
+        </Grid>
+        <Grid  x:Name="ListCupon" Grid.Row="10"  Grid.Column="1" Width="350" Height="474" Grid.RowSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
+
+
+            </Grid.RowDefinitions>
+            <Label x:Name="Headerlist" Grid.Row="0" Content=" Перелік задіяних купонів  " FontSize="19" FontWeight="Medium" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                   VerticalAlignment="Center" Width="273" Height="34" Margin="25,7,52,7"   /><!--PreviewMouseDown="ButtonCupon_List_PreviewMouseDown"-->
+
+            <Label x:Name="cupon0" Grid.Row="1" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34" Margin="15,4,0,5"    />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_0" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose0_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="1"   />
+            <!--PreviewMouseDown="ButtonClose_PreviewMouseDown"PreviewMouseDown="ButtonClose0_PreviewMouseDown" -->
+            <Label x:Name="cupon1" Grid.Row="2" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_1" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose1_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="2"  /> <!--PreviewMouseDown="ButtonClose1_PreviewMouseDown"-->  
+            <Label x:Name="cupon2" Grid.Row="3" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"   Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_2" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose2_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="3"   /> <!--PreviewMouseDown="ButtonClose2_PreviewMouseDown"--> 
+            <Label x:Name="cupon3" Grid.Row="4" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"   Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_3" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose3_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="4"  /> <!--PreviewMouseDown="ButtonClose3_PreviewMouseDown"-->  
+            <Label x:Name="cupon4" Grid.Row="5" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"   />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_4" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose4_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="5"    /> <!--PreviewMouseDown="ButtonClose4_PreviewMouseDown"-->
+            <Label x:Name="cupon5" Grid.Row="6" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"   />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_5" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose5_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="6"   /> <!--PreviewMouseDown="ButtonClose5_PreviewMouseDown"--> 
+            <Label x:Name="cupon6" Grid.Row="7" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_6" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose6_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="7"   /> <!--PreviewMouseDown="ButtonClose6_PreviewMouseDown"--> 
+            <Label x:Name="cupon7" Grid.Row="8" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34" Margin="15,4,0,5"   />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_7" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose7_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="8"    /> <!--PreviewMouseDown="ButtonClose7_PreviewMouseDown"-->
+            <Label x:Name="cupon8" Grid.Row="9" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_8" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose8_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="9"  /><!--PreviewMouseDown="ButtonClose8_PreviewMouseDown"--> 
+            <Label x:Name="cupon9" Grid.Row="10" Content="" FontSize="19" FontWeight="Medium"  VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="34"  Margin="15,4,0,5"  />
+            <Image Height="38" HorizontalAlignment="Stretch" Name="Dele_9" Stretch="None" VerticalAlignment="Center"
+               Source="pack://application:,,,/PreOrderWin;component/Images/xrestik_vyity.png" PreviewTouchDown="ButtonClose9_TouchDown"
+               Cursor="Hand" Margin="241,2,66,3" Grid.Row="10"    /><!--PreviewMouseDown="ButtonClose9_PreviewMouseDown"-->
+        </Grid>
+
+        <Button  x:Name ="ButtonBack" Grid.Row="11" Grid.Column="0" Margin="20,212,0,35" FontWeight="Bold" Template="{DynamicResource ClassButton}"  Width="260" 
+                 Height="60" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment = "Left"  PreviewMouseLeftButtonDown="ButtonCupon_Back_PreviewMouseDown" 
+                 Stylus.IsPressAndHoldEnabled="False">
+            <!--Click="Back_Click"-->
+            <Button.Effect>
+                <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+            </Button.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="380"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="BackLeft" Grid.Column="0"  Padding="5" Width="45" HorizontalAlignment="Left" Margin="4,0,0,0" >
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Back_left.jpg"/>
+                    </Border.Background>
+                </Border>
+                <Label Name="BackMain" Grid.Column="1" Content="РЕДАГУВАТИ " FontFamily="dinpro-bold"  FontSize="26" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,10,192,10" />
+            </Grid>
+        </Button>
+        <Button  x:Name ="ButtonCupon" Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" Template="{DynamicResource ClassButton}"  Width="380" 
+                 Height="60" FontSize="28"   PreviewMouseLeftButtonDown="ButtonCupon_List_PreviewMouseDown" Margin="0,178,120,0" 
+                 Stylus.IsPressAndHoldEnabled="False">
+            <!--PreviewTouchDown="ButtonCupon_Next_PreviewTouchDown"PreviewMouseDown="ButtonCupon_Next_PreviewMouseDown"Click="Next_Click"-->
+            <Button.Effect>
+                <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+            </Button.Effect>
+            <Grid Width="380">
+
+                <Grid.ColumnDefinitions >
+
+                    <ColumnDefinition Width="33*"/>
+                    <ColumnDefinition Width="5*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="NextG"  Padding="5"  Margin="2,0,4,0" Grid.Column="1"  >
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Next.jpg"/>
+                    </Border.Background>
+                </Border>
+                <Label Name="Next1" Grid.Column="0" Content="ПРОДОВЖИТИ З КУПОНАМИ" FontFamily="dinpro-bold"  FontSize="22" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,10" Height="38" />
+            </Grid>
+        </Button>
+
+
+        <Button  x:Name ="ButtonNext" Grid.Row="11" Grid.Column="1" Margin="0,212,20,35" FontWeight="Bold" Template="{DynamicResource ClassButton}"  Width="380" 
+                 Height="60" FontSize="28" VerticalAlignment="Stretch" HorizontalAlignment = "Right" PreviewMouseLeftButtonDown="ButtonCupon_Next_PreviewMouseDown" 
+                 Stylus.IsPressAndHoldEnabled="False">
+            <!--PreviewTouchDown="ButtonCupon_Next_PreviewTouchDown"PreviewMouseDown="ButtonCupon_Next_PreviewMouseDown"Click="Next_Click"-->
+            <Button.Effect>
+                <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+            </Button.Effect>
+            <Grid Width="380">
+
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="342*"/>
+                    <ColumnDefinition Width="53*"/>
+
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="NextGo"  Padding="5" Width="50" HorizontalAlignment="Right"  Margin="0,0,6,0" Grid.ColumnSpan="2"  >
+                    <Border.Background>
+                        <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/Next.jpg"/>
+                    </Border.Background>
+                </Border>
+                <Label Name="NextText" Grid.Column="0" Content="ПРОДОВЖИТИ БЕЗ КУПОНА" FontFamily="dinpro-bold"  FontSize="22" FontWeight="Bold" Foreground="Black" VerticalAlignment="Center" Margin="0,10,10,10" Height="38" />
+            </Grid>
+        </Button>
+    </Grid>
+</Window>
+

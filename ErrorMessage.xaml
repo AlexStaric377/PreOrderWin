@@ -1,0 +1,101 @@
+﻿<Window x:Class="PreOrderWin.ErrorMessage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PreOrderWin"
+        mc:Ignorable="d"
+        Title="ErrorMessage" Height="700" Width="700"  ShowInTaskbar="False"  
+           WindowStyle="None"  WindowState="Normal" AllowsTransparency="True" WindowStartupLocation="Manual"  Background="{x:Null}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  Height="680" Width="670" Name="WinGrid"   >
+        <Grid.Background>
+            <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/okno_vyhoda_s.png" />
+        </Grid.Background>
+
+        <Image  Source="pack://application:,,,/PreOrderWin;component/Images/bankterminal.png" Margin="232,123,210,242"/>
+        <TextBlock x:Name="TextConect"  TextAlignment="Center"  Text="Не встановлено зв'язок з банком" FontSize="32" Height="70" FontWeight="Medium" FontFamily="dinpro-bold" 
+                   Margin="109,382,77,0"   VerticalAlignment="Top" TextWrapping="Wrap" />
+
+
+        <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Content="ПОВТОРИТИ"  Height="95" HorizontalAlignment="Left" Margin="109,465,0,0"
+               Name="Ok_But" VerticalAlignment="Top" Width="206" FontFamily="Calibri" FontSize="24" FontWeight="Bold" Cursor="Hand" 
+                   PreviewMouseLeftButtonDown="ButtonRepeat_MouseLeftButtonDown" Stylus.IsPressAndHoldEnabled="False"  ><!--PreviewMouseDown="ButtonRepeat_PreviewMouseDown"TouchDown="ButtonRepeat_TouchDown"-->
+            <Label.Background>
+                <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/knp_zelt1.png" Stretch="Uniform" TileMode="None"  />
+            </Label.Background>
+        </Label>
+        <Label Content="ВІДМІНИТИ" Cursor="Hand" FontFamily="Calibri" FontSize="24" FontWeight="Bold" Height="95" HorizontalContentAlignment="Center" Margin="335,465,0,0" 
+               Name="Close_But" VerticalAlignment="Top" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="214" IsEnabled="True"
+                PreviewMouseLeftButtonDown="ButtonVoid_PreviewMouseDown" Stylus.IsPressAndHoldEnabled="False" > <!--PreviewTouchDown="ButtonVoid_TouchDown"TouchDown="ButtonVoid_TouchDown"--> 
+            <Label.Background>
+                <ImageBrush ImageSource="pack://application:,,,/PreOrderWin;component/Images/knp_zelt1.png" Stretch="Uniform" TileMode="None" />
+            </Label.Background>
+        </Label>
+        <Image Height="32" HorizontalAlignment="Stretch" Margin="550,186,88,0" Name="Close_F" Stretch="None" VerticalAlignment="Top"  Width="32"
+               Source="pack://application:,,,/PreOrderWin;component/Images/x2.png" PreviewMouseLeftButtonDown="ButtonClose_MouseLeftButtonDown"
+               Cursor="Hand"    /> <!--PreviewMouseDown="ButtonClose_PreviewMouseDown"--> 
+    </Grid>
+</Window>
+
+
+
+<!--<Window.Resources>
+        <ControlTemplate x:Key="ClassButton" TargetType="{x:Type Button}">
+            -->
+<!-- Секция дня описания кнопки -->
+<!-- Наружная граница белая -->
+<!--
+            <Border BorderBrush="White" Background="White" BorderThickness="1,1,1,1" CornerRadius="8,8,8,8">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Grid.RowSpan="2" />
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    -->
+<!--<DockPanel x:Name ="ButtonWin" VerticalAlignment="Center" Height="250" Width="400" >-->
+<!--
+
+        <Border x:Name="BorderWin" BorderBrush="#FFFFC500"  Background="#FFFFF633"  BorderThickness="3,3,3,3" CornerRadius="15,15,15,15">
+            <Border.Effect>
+                <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+            </Border.Effect>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="47*" />
+                    <RowDefinition Height="36*"/>
+                    <RowDefinition Height="39*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="pack://application:,,,/PreOrderWin;component/Images/bankterminal.png"/>
+                <TextBlock  x:Name="Mayonez" Text=" Не встановлено зв'язок з банком" TextWrapping="Wrap" VerticalAlignment="Center"  HorizontalAlignment="Center"   
+                             FontSize="32" FontWeight="Medium" FontFamily="dinpro-bold"   Foreground="Black"  Height="72"  Width="282"   Grid.Row="1"   />
+                <Grid Grid.Row="2"   >
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width ="150*" />
+                        <ColumnDefinition Width="150*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Template="{DynamicResource ClassButton}"  x:Name ="Button3"  Grid.Column="0"  Width="140" Height="50"  VerticalAlignment="Center"  HorizontalAlignment = "Center" Click="Repeat_Click" Margin="32,14,25,14"  >
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                        </Button.Effect>
+                        <Label Name="Reserv" VerticalAlignment="Center" HorizontalAlignment="Center" Content="ПОВТОРИТИ" FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="18" Foreground="Black" Height="29"  />
+                    </Button>
+                    <Button Template="{DynamicResource ClassButton}"  x:Name ="ButtonNo"  Grid.Column="1"  Width="144" Height="50"  VerticalAlignment="Center"  HorizontalAlignment = "Center" Click="Cancel_Oder_Click" Margin="21,14,32,14"  >
+                        <Button.Effect>
+                            <DropShadowEffect Color="#FF1D1504" BlurRadius="35" ShadowDepth="10" Opacity="0.5" ></DropShadowEffect>
+                        </Button.Effect>
+                        <Label Name="OrderDelete" VerticalAlignment="Center" HorizontalAlignment="Center" Content="ВІДМІНИТИ" FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="18" Foreground="Black" Height="29"  />
+                    </Button>
+
+                </Grid>
+
+
+            </Grid>
+
+
+
+        </Border>
+
+    -->
+<!--</DockPanel>-->
+<!--
+</Window>-->

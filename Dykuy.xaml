@@ -1,0 +1,41 @@
+﻿<Window x:Class="PreOrderWin.Dykuy"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PreOrderWin"
+        mc:Ignorable="d"
+        Title="Dykuy" Height="1920" Width="1080" VerticalAlignment="Center" HorizontalAlignment="Center"   ShowInTaskbar="False"  
+           WindowStyle="None" AllowsTransparency="True" WindowState="Maximized" >
+    <Window.Resources>
+        <ControlTemplate x:Key="ClassButton" TargetType="{x:Type Button}">
+
+            <Border x:Name="Radius"    BorderThickness="0,0,0,0" CornerRadius="10,10,10,10">
+
+                <Border.Background>
+                    <ImageBrush x:Name="StartImage" ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen-14_.jpg"/>
+                </Border.Background >
+
+            </Border>
+
+        </ControlTemplate>
+
+    </Window.Resources>
+
+    <Grid  >
+
+        <Grid.Background >
+            <ImageBrush x:Name="StartImage" ImageSource="pack://application:,,,/PreOrderWin;component/Images/screen-14fon.jpg"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="953*" />
+            <RowDefinition Height="106*"/>
+            <RowDefinition Height="861*" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="Text1" Grid.Row="1"  Content="ДЯКУЄМО ЗА ЗАМОВЛЕННЯ!"  VerticalAlignment="Center" HorizontalContentAlignment="Center" 
+               FontWeight="Bold" FontFamily="dinpro-bold"  FontSize="62" Foreground="Black"  Height="86" />
+
+    </Grid>
+</Window>
